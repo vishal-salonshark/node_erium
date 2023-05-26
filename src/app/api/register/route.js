@@ -1,4 +1,4 @@
-import dbConnect from '@/database/dbConnect'
+import dbConnect from '@/database/dbConnect.js'
 import bcrypt from 'bcrypt'
 import User from '@/models/User'
 
@@ -6,24 +6,17 @@ export async function POST(req){
     try {
         await dbConnect.connect()
 
-        const {username, email, password: pass, recoveryString} = await req.json()
+        const {username, email, password: pass , } = await req.json()
+        console.log(req.json())
+        const isExisting = await User.findOne({email})
 
-        const isEmailExisting = await User.findOne({email})
-        const isUserNameExisting = await User.findOne({username})
-
-
-
-        if(isEmailExisting){
-            throw new Error("Email already exists")
-        }
-
-        if(isUserNameExisting){
+        if(isExisting){
             throw new Error("User already exists")
         }
 
         const hashedPassword = await bcrypt.hash(pass, 10)
 
-        const newUser = await User.create({username, email, password: hashedPassword, recoveryString})
+        const newUser = await User.create({username, email, password: hashedPassword})
 
         const {password, ...user} = newUser._doc
 
