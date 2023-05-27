@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from "next-auth/providers/google";
 import User from "@/models/User";
 import { signJwtToken } from "@/library/jwt";
 import bcrypt from 'bcrypt'
@@ -7,6 +8,11 @@ import dbConnect from '@/database/dbConnect.js';
 
 const handler = NextAuth({
     providers: [
+        GoogleProvider({
+            clientId: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET
+          }),
+
         CredentialsProvider({
             type: 'credentials',
             credentials: {
