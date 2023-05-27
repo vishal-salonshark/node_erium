@@ -4,9 +4,11 @@ import React, { useEffect, useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { ToastContainer, toast } from 'react-toastify'
 import randomstring from 'randomstring';
+import { useRouter } from 'next/router';
 // import axios from 'axios';
 
 const Register = () => {
+  
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -42,17 +44,6 @@ const Register = () => {
         body: JSON.stringify({ username, email, password, recoveryCode })
       })
 
-      // const res = await axios.post('http://localhost:3000/api/register', {
-      //   username,
-      //   email,
-      //   password,
-      //   recoveryCode
-      // }, {
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   }
-      // });
-
       console.log(await res.json())
       if (res.ok) {
         toast.success("Successfully registered the user")
@@ -70,14 +61,17 @@ const Register = () => {
   }
 
   return (
-    <div className={''}>
-      <div className={''}>
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="text" placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
-          <input type="email" placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
-          <input type="password" placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
-          <button className={''}>Register</button>
+    <div className='w-screen h-screen flex justify-center items-center'>
+    <div className='w-[30rem]  h-[35rem] shadow-2xl shadow-gray-500 rounded-3xl'>
+        <h2 className='w-full text-center mt-24 text-2xl font-semibold m-2'>Register</h2>
+        <form className='mt-10 w-4/5  mx-auto flex flex-col justify-center items-center' onSubmit={handleSubmit}>
+          <input type="text" className='w-80 h-12 rounded-xl p-2 outline-none focus:outline-blue-400 focus:border-none border border-gray-500' placeholder='Username...' onChange={(e) => setUsername(e.target.value)} />
+          <input type="email" className='w-80 h-12 mt-5 rounded-xl p-2 outline-none focus:outline-blue-400 focus:border-none border border-gray-500' placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
+          <input type="password" className='w-80 h-12 mt-5 rounded-xl p-2 outline-none focus:outline-blue-400 focus:border-none border border-gray-500' placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
+          <div className=' w-4/5  gap-4 flex justify-between items-center'>
+          <button  className='w-36 h-12 my-5 rounded-lg bg-blue-500 text-white text-lg font-medium' >Register</button>
+          <button type='reset' className='w-36 h-12 my-5 rounded-lg border border-blue-500 text-blue-500 text-lg font-medium'> Reset </button>
+          </div>
           {/* <button className={''} onClick={() => signIn()}>
                         Don&apos;t have an account? <br /> Register now.
                     </button> */}

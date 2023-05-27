@@ -1,9 +1,9 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials'
 import User from "@/models/User";
-import { signJwtToken } from "@/lib/jwt";
+import { signJwtToken } from "@/library/jwt";
 import bcrypt from 'bcrypt'
-import db from "@/lib/db";
+import dbConnect from '@/database/dbConnect.js';
 
 const handler = NextAuth({
     providers: [
@@ -16,7 +16,7 @@ const handler = NextAuth({
             async authorize(credentials, req){
                 const {email, password} = credentials
 
-                await db.connect()
+                await dbConnect.connect()
                                 
                 const user = await User.findOne({ email })
 
@@ -24,9 +24,6 @@ const handler = NextAuth({
                     throw new Error("Invalid input")
                 }
 
-                // 2 parameters -> 
-                // 1 normal password -> 123123
-                // 2 hashed password -> dasuytfygdsaidsaugydsaudsadsadsauads
                 const comparePass = await bcrypt.compare(password, user.password)
 
                 if(!comparePass){
@@ -46,6 +43,9 @@ const handler = NextAuth({
     ],
     pages: {
         signIn: '/login'
+    },
+    session: {
+        strategy: 'jwt',
     },
     callbacks: {
         async jwt({token, user}){

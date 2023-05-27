@@ -6,7 +6,7 @@ export async function POST(req){
     try {
         await dbConnect.connect()
 
-        const {username, email, password: pass , } = await req.json()
+        const {username, email, password: pass, recoveryCode } = await req.json()
         console.log(req.json())
         const isExisting = await User.findOne({email})
 
@@ -16,7 +16,7 @@ export async function POST(req){
 
         const hashedPassword = await bcrypt.hash(pass, 10)
 
-        const newUser = await User.create({username, email, password: hashedPassword})
+        const newUser = await User.create({username, email, password: hashedPassword, recoveryCode})
 
         const {password, ...user} = newUser._doc
 

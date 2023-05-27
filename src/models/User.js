@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    recoveryString:{
+    recoveryCode:{
         type: String,
         required: true,
     },
