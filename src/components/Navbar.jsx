@@ -8,15 +8,15 @@ import { BsFillPeopleFill, BsFillQuestionCircleFill } from "react-icons/bs";
 
 const Navbar = () => {
     const Menus = [
-        { name: "Dashbord", icon: <MdSpaceDashboard/>, href: "/Dashboard" },
-        { name: "Wi-Fi", icon: <MdWifi/>, href: "/Wi-Fi"  },
-        { name: "VPN", icon: <MdOutlineVpnLock/>, href: ""  },
-        { name: "Packages", icon: <MdFolderZip/>, href: ""  },
-        { name: "Stacker", icon: <FaEthereum/>, href: ""  },
-        { name: "Repository", icon: <GoRepoForked/>, href: ""  },
-        { name: "System", icon: <MdSettings/>, href: ""  },
-        { name: "Comunity", icon: <BsFillPeopleFill/>, href: ""  },
-        { name: "Support", icon: <BsFillQuestionCircleFill/>, href: ""  },
+        { name: "Dashboard", icon: <MdSpaceDashboard/>, href: "/profile/dashboard" },
+        { name: "Wi-Fi", icon: <MdWifi/>, href: "/profile/wi-fi"  },
+        { name: "VPN", icon: <MdOutlineVpnLock/>, href: "/profile/vpn"  },
+        { name: "Packages", icon: <MdFolderZip/>, href: "/profile/packages"  },
+        { name: "Stacker", icon: <FaEthereum/>, href: "/profile/stacker"  },
+        { name: "Repository", icon: <GoRepoForked/>, href: "/profile/repository"  },
+        { name: "System", icon: <MdSettings/>, href: "/profile/system"  },
+        { name: "Comunity", icon: <BsFillPeopleFill/>, href: "/profile/comunity"  },
+        { name: "Support", icon: <BsFillQuestionCircleFill/>, href: "/profile/support"  },
       ];
       const [active, setActive] = useState(0);
   return (

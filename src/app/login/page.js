@@ -30,7 +30,7 @@ const Login = () => {
             const res = await signIn('credentials', { email, password, redirect: false })
 
             if (res?.error == null) {
-                router.push("/dashbord")
+                router.push("/profile")
             } else {
                 toast.error("Error occured while logging")
             }
@@ -41,7 +41,7 @@ const Login = () => {
 
     // Google Handler function
     async function handleGoogleSignin(){
-        signIn('google', { callbackUrl : "http://localhost:3000/dashbord"})
+        signIn('google', { callbackUrl : "http://localhost:3000/profile"})
     }
 
     return (
