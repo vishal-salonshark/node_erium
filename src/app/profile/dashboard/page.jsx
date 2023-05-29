@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 
 const page = async () => {
   // const [system, setSystem] = useState(undefined);
-  const [cpu, setCpu] = useState()
-  const [memory, setMemory] = useState()
-  const [disk, setDisk] = useState()
+  const [cpu, setCpu] = useState(0)
+  const [memory, setMemory] = useState(0)
+  const [disk, setDisk] = useState(0)
   
   const getSystemInfo = async () => {
     const res = await fetch(`http://localhost:3000/api/os`, {
@@ -15,13 +15,21 @@ const page = async () => {
       method: "GET",
     });
     const sys = await res.json();
-    setCpu(Number(sys.cpuUsage))
-    setMemory(Number(sys.memoryUsage))
-    setDisk(Number(sys.diskUsage))
+    return sys;
   };
 
-    getSystemInfo();
+    getSystemInfo().then((data)=>{
+    setCpu(Number(data.cpuUsage))
+    setMemory(Number(data.memoryUsage))
+    setDisk(Number(data.diskUsage))
+    });
 
+
+  useEffect(()=>{
+    console.log(cpu)
+    console.log(memory)
+    console.log(disk)
+  },[disk, memory, cpu])
 
   return (
     <div className="w-full p-12 ">
