@@ -11,7 +11,7 @@ const Navbar = () => {
         { name: "Dashboard", icon: <MdSpaceDashboard/>, href: "/profile/dashboard" },
         { name: "Wi-Fi", icon: <MdWifi/>, href: "/profile/wi-fi"  },
         { name: "VPN", icon: <MdOutlineVpnLock/>, href: "/profile/vpn"  },
-        { name: "Packages", icon: <MdFolderZip/>, href: "/profile/packages"  },
+        { name: "Packages", icon: <MdFolderZip/>, href: "/profile/package"  },
         { name: "Stacker", icon: <FaEthereum/>, href: "/profile/stacker"  },
         { name: "Repository", icon: <GoRepoForked/>, href: "/profile/repository"  },
         { name: "System", icon: <MdSettings/>, href: "/profile/system"  },
