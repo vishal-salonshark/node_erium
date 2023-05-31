@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { signIn } from 'next-auth/react'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import randomstring from 'randomstring';
 import { useRouter } from 'next/navigation';
 import {BsShieldLock, BsInfoCircle} from 'react-icons/bs'
@@ -55,7 +54,6 @@ const Register = () => {
       console.log(await res.json())
       if (res.ok) {
         toast.success("Successfully registered the user")
-        setRegisterSuccess(true)
         return
       } else {
         toast.error("Error occured while registering")

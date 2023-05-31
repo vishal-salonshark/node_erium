@@ -1,38 +1,36 @@
-import { exec } from 'child_process'
+import wifi from "node-wifi";
 
-// Function to reset Wi-Fi password
-function resetWifiPassword(ssid, newPassword) {
-    return new Promise((resolve, reject) => {
-      const cmd = `nmcli connection modify "${ssid}" wifi-sec.psk ${newPassword}`;
-      exec(cmd, (error, stdout, stderr) => {
-        if (error || stderr) {
-          reject(error || stderr);
-          return;
-        }
-        resolve(`Successfully reset Wi-Fi password for SSID: ${ssid}`);
-      });
+// Connect to WiFi network
+function connectToWiFi(ssid, password) {
+  return new Promise((resolve, reject) => {
+    wifi.connect({ ssid, password }, (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
     });
+  });
+}
+
+export async function POST(req) {
+  try {
+    // Initialize wifi module
+    wifi.init({
+      iface: null, // Network interface to use (optional)
+    });
+
+    const { ssid, password } = await req.json();
+
+    const result = await connectToWiFi(ssid, password);
+    console.log(result);
+    // res.json({ message: result });
+
+    return new Response(
+      JSON.stringify({ message: "Successfully connected to WiFi." }),
+      { status: 200 }
+    );
+  } catch (error) {
+    return new Response(JSON.stringify(error.message), { status: 500 });
   }
-  
-  // API endpoint to change Wi-Fi password
-//   app.post('/change-password', async (req, res) => {
-//     try {
-//       const { ssid, newPassword } = req.body;
-//       const result = await resetWifiPassword(ssid, newPassword);
-//       res.json({ message: result });
-//     } catch (error) {
-//       res.status(500).json({ error: error.message });
-//     }
-//   });
-
-export async function POST(req){
-    try {
-        const { ssid, newPassword } = await req.json();
-        const result = await resetWifiPassword(ssid, newPassword);
-        // res.json({ message: result });
-
-        return new Response({ message: result }, {status: 200})
-    } catch (error) {
-        return new Response(JSON.stringify(error.message), {status: 500})
-    }
 }
