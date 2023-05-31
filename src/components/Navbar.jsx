@@ -20,7 +20,7 @@ const Navbar = () => {
       ];
       const [active, setActive] = useState(0);
   return (
-    <div className=' h-[100vh] w-[15%] flex flex-col justify-start py-2 shadow-2xl shadow-gray-800 items-center'>
+    <div className=' h-[100vh] w-[15%] bg-white flex flex-col justify-start py-2 shadow-2xl shadow-gray-800 items-center'>
       <span className='w-52 h-12 p-2 text-2xl font-extrabold text-[#030214] text-center align-middle '>EriumNode</span>
 
       <div className='w-52 flex flex-col justify-between px-2 text-[#030214] mt-12 items-center'>

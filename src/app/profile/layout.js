@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
         <BiUser className="w-5 h-5 mx-2"/>
         </div>
       </div>
-      <div>
+      <div className='w-full'>
         {children}
       </div>
     </div>
