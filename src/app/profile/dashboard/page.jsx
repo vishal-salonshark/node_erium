@@ -17,11 +17,11 @@ const page = () => {
           };
 
     useEffect(()=>{
-      setInterval(() => {
-        getSystemInfo().then((data)=>{
-            setSystemInfo(data)
-        })
-      }, 3000);
+      // setInterval(() => {
+      //   getSystemInfo().then((data)=>{
+      //       setSystemInfo(data)
+      //   })
+      // }, 3000);
     },[])
 
   return (

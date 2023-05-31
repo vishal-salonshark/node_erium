@@ -1,26 +1,28 @@
 "use client"
 import React, { useState } from 'react'
-import {BsInfoCircle} from 'react-icons/bs'
-import {BiWifi2} from 'react-icons/bi'
+import {BsInfoCircleFill} from 'react-icons/bs'
+import {IoIosWifi} from 'react-icons/io'
 
 const WiFi = () => {
+    // http://localhost:3000/api/changeWifiCredentials
   const [isSelected, setIsSelected] = useState(false) 
   return(
       <div>
-      <div className='m-2 p-2 bg-white flex flex-col border-2 border-neutral-400'>
-          <div className='flex flex-row text-sm border-b-2 border-b-slate-400 py-3 px-2'>
-              <p className='mr-1'>
-                  Connect to the Wi-fi hotspot exposed by your DAppNode using your credentials. More information at:
+      <div className='mt-5 p-2 bg-[#fff] flex flex-col rounded border text-gray-800 border-neutral-300'>
+          <div className='flex flex-row text-sm font-normal gap-4 pb-5 border-b border-b-slate-200 py-3 px-2'>
+              <p className=''>
+                  Connect to the Wi-fi hotspot exposed by your EriumNode using your credentials. More information at:
               </p>
-              <a href="https://www.w3schools.com" className='flex flex-row text-cyan-500' target='none'>
-                  <BsInfoCircle width={40} height={40} className='mt-1'/>
-                  How to connect to DAppNode Wifi
+              <a href="" className='flex flex-row justify-start items-center gap-2 font-light text-blue-400' target='none'>
+                  <BsInfoCircleFill className='w-5 h-5'/>
+                  How to connect to EriumNode Wifi
               </a> 
           </div>
-          <div className='flex flex-row justify-between'>
-              <div className='flex flex-row'>
-                  <p className='m-2 text-sm font-semibold bg-cyan-500 rounded-lg p-1 text-white'>Running</p>
-                  <p className='flex flex-row mt-2'><BiWifi2 className='m-1'/>Wifi</p>
+          <div className='flex flex-row justify-start items-center p-2'>
+              <div className='flex flex-row justify-start gap-3 items-center'>
+                  <p className=' text-xs font-semibold bg-cyan-400 h-4 rounded px-1 text-white'>RUNNING</p>
+                  <IoIosWifi className='m-1 w-5 h-5'/>
+                  <p className='text-base font-normal'>Wifi</p>
               </div>
               <div onClick={() => setIsSelected(!isSelected)} className= {("flex w-16 h-8 bg-gray-600 m-2 mb-0 rounded-full", {
                   'bg-green-500': isSelected
@@ -32,22 +34,23 @@ const WiFi = () => {
               
           </div>
       </div>
-      <div className='bg-white flex flex-col border-2 border-neutral-300 m-2 text-left'>
-          <h2 className='m-2'>Change the WIFI credentials</h2>
-          <div className='m-2'>
-              <h2 className="font-light">SSID</h2>
-              <input type="text" className='w-full border-2 border-stone-300 p-1'/>
+
+      <div className='bg-[#fff] flex flex-col border border-neutral-300 mt-5 p-4 rounded text-gray-800 text-left'>
+          <h2 className='pb-4'>Change the WIFI credentials</h2>
+          <div className='mb-4'>
+              <h2 className="font-normal text-gray-400 mb-2">SSID</h2>
+              <input type="text" className='w-full outline-none text-xs rounded p-2 border border-stone-300'/>
           </div>
-          <div className='m-2'>
-              <h3>New Password</h3>
-              <input type="password" placeholder='password' className='border-2 border-stone-300 w-full p-1' />
+          <div className='mb-4'>
+              <h2 className="font-normal text-gray-400 mb-2">New Password</h2>
+              <input type="password" className='w-full outline-none text-xs rounded p-2 border border-stone-300'/>
           </div>
-          <div className='m-2'>
-              <h3>Confirm new Password</h3>
-              <input type="password" placeholder='type the password again' className='w-full p-1 border-2 border-stone-300'/>
+          <div className='mb-4'>
+              <h2 className="font-normal text-gray-400 mb-2">Confirm new Password</h2>
+              <input type="password" className='w-full outline-none text-xs rounded p-2 border border-stone-300'/>
           </div>
-          <div className=' mx-2 mb-2'>
-              <button className='text-white bg-cyan-500 rounded-md p-1'>Change credentials</button>
+          <div className='mb-4'>
+              <button className='text-white bg-gray-400 text-sm font-semibold hover:bg-blue-400 rounded-md p-2 '>Change credentials</button>
           </div>
       </div>
       </div>
