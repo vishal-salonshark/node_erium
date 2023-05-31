@@ -54,6 +54,7 @@ const Register = () => {
       console.log(await res.json())
       if (res.ok) {
         toast.success("Successfully registered the user")
+        setRegisterSuccess(true)
         return
       } else {
         toast.error("Error occured while registering")

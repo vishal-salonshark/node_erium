@@ -46,7 +46,6 @@ const WiFi = () => {
       console.log(await res.json())
       if (res.ok) {
         toast.success("Connected to Wi-Fi Successfully")
-        setRegisterSuccess(true)
         return
       } else {
         toast.error("Error occured while connecting")
