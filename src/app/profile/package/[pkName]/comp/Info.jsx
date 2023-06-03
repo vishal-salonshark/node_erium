@@ -1,12 +1,14 @@
 import React from "react";
 import { AiFillBug, AiFillSetting, AiOutlinePauseCircle } from "react-icons/ai";
 import { BsInfoCircleFill } from "react-icons/bs";
+import {MdDelete, MdOutlineDelete} from 'react-icons/md'
+import {LuChevronsUpDown} from "react-icons/lu"
 import { HiOutlineClipboardCopy } from "react-icons/hi";
 import { RiRestartLine } from "react-icons/ri";
 
 const Info = () => {
   return (
-    <div className=" mt-20">
+    <div className=" mt-5">
       <h1 className="text-3xl text-gray-500">Getting Started</h1>
 
       <div className="border border-gray-300 p-5 rounded bg-white mt-4">
@@ -100,7 +102,7 @@ const Info = () => {
         </button>
 
         <div className='mt-5'>
-      <div className='flex flex-row h-12 mt-2 justify-between items-center'>
+      <div className='flex flex-row h-8 mt-2 justify-between items-center'>
         <div className='flex flex-row justify-center gap-5 items-center'>
           <label className='text-sm w-20 text-left text-gray-500'>Status</label>
           <label className='text-sm w-20 text-left text-gray-500'>Name</label>
@@ -112,7 +114,7 @@ const Info = () => {
         </div>
       </div>
 
-        <div className="flex flex-row h-12 justify-between items-center">
+        <div className="flex flex-row justify-between items-center">
           <div className="flex flex-row justify-center gap-5 items-center">
             <label
               className={`text-xs font-semibold bg-cyan-400 p-[0.125rem] rounded text-white w-20 text-center`}
@@ -136,6 +138,75 @@ const Info = () => {
             </label>
           </div>
         </div>
+        </div>
+
+        <div className='mt-5'>
+      <div className='flex flex-row mt-2 h-10 justify-between items-center'>
+        <div className='flex flex-row justify-center gap-5 items-center'>
+          <label className='text-sm w-20 text-left text-gray-500'>Volume</label>
+        </div>
+
+        <div className='flex flex-row justify-center gap-5 items-center'>
+          <label className='text-sm w-20 text-center text-gray-500'>Size</label>
+          <label className='text-sm w-20 text-center text-gray-500'>Remove</label>
+        </div>
+      </div>
+
+        <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row justify-center gap-5 items-center">
+            <span className="text-base font-medium text-center text-gray-800">
+              All Volume
+            </span>
+          </div>
+
+          <div className="flex flex-row justify-center gap-5 items-center">
+            <label
+              className="w-20 flex justify-center items-center"
+              onClick={""}
+            >
+              <LuChevronsUpDown className="w-6 h-6 text-gray-500" />
+              <span className="text-sm px-1">3.1 MB</span>
+            </label>
+            <label className="w-20 flex justify-center items-center">
+              <MdDelete className="w-6 h-6 text-gray-500" />
+            </label>
+          </div>
+        </div>
+        </div>
+
+        <div className='mt-5'>
+      <div className='w-full flex flex-row mt-2 justify-between items-center'>
+        <div className='flex flex-col justify-center items-start'>
+          <label className='text-sm font-semibold text-left text-gray-800'>Remove</label>
+          <label className='text-sm  text-left text-gray-500'>Delete Geth Pacakge permanantly</label>
+        </div>
+
+        <div className=" w-10 h-10 mr-5 rounded-md border p-2 border-red-400">
+        <MdOutlineDelete className="w-6 h-6 text-red-400" />
+        </div>
+        
+      </div>
+
+        {/* <div className="flex flex-row justify-between items-center">
+          <div className="flex flex-row justify-center gap-5 items-center">
+            <span className="text-base font-medium text-center text-gray-800">
+              All Volume
+            </span>
+          </div>
+
+          <div className="flex flex-row justify-center gap-5 items-center">
+            <label
+              className="w-20 flex justify-center items-center"
+              onClick={""}
+            >
+              <LuChevronsUpDown className="w-6 h-6 text-gray-500" />
+              <span className="text-sm px-1">3.1 MB</span>
+            </label>
+            <label className="w-20 flex justify-center items-center">
+              <MdDelete className="w-6 h-6 text-gray-500" />
+            </label>
+          </div>
+        </div> */}
         </div>
       </div>
     </div>

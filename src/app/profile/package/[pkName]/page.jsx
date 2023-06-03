@@ -11,7 +11,7 @@ const page = (props) => {
   const tabs = ["Info", "Config", "Network", "Logs", "File Manager"];
   const { pkName } = props.params;
   return (
-    <div className="w-full p-10 text-gray-800 ">
+    <div className="w-full px-10 pt-10 text-gray-800 ">
       <h1 className="w-full text-4xl text-gray-500 font-medium">
         Packages <span className="text-gray-800">{pkName}</span>
       </h1>
@@ -33,7 +33,7 @@ const page = (props) => {
           );
         })}
       </div>
-      <div className=''>
+      <div className=' mt-5 h-[70vh] overflow-auto scrollbar-none '>
                       {
                       active === 'Info'?
                         <Info/>
