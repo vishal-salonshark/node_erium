@@ -1,8 +1,10 @@
 import React from 'react'
 import { MdOpenInNew } from 'react-icons/md'
 import { RiRestartLine } from 'react-icons/ri'
+import { useRouter } from 'next/navigation'
 
 const SystemPackages = () => {
+  const router = useRouter()
   const packages = [
     {name:'Bind', status:'RUNNING'},
     {name:'DappManager', status:'RUNNING'},
@@ -25,9 +27,9 @@ const SystemPackages = () => {
         </div>
       </div>
 
-     { packages.map((item)=>{
+     { packages.map((item, i)=>{
       return(
-      <div className='flex flex-row h-12 p-4 justify-between items-center'>
+      <div className='flex flex-row h-12 p-4 justify-between items-center' key={i}>
       <div className='flex flex-row justify-center gap-5 items-center'>
         <label className={`text-xs font-semibold ${item.status === 'RUNNING'? 'bg-cyan-400': 'bg-yellow-400'} p-[0.125rem] rounded text-white w-20 text-center`}>{item.status}</label>
         <div className='flex flex-row justify-center items-center gap-2'> 
@@ -37,7 +39,7 @@ const SystemPackages = () => {
       </div>
 
       <div className='flex flex-row justify-center gap-5 items-center'>
-        <label className='w-20 flex justify-center items-center'><MdOpenInNew className='w-6 h-6 text-gray-500'/></label>
+        <label className='w-20 flex justify-center items-center' onClick={()=>router.push(`/profile/package/${item.name}`)}><MdOpenInNew className='w-6 h-6 text-gray-500'/></label>
         <label className='w-20 flex justify-center items-center'><RiRestartLine className='w-6 h-6 text-gray-500'/></label>
       </div>
     </div>

@@ -15,7 +15,7 @@ const Navbar = () => {
         { name: "Stacker", icon: <FaEthereum/>, href: "/profile/stacker"  },
         { name: "Repository", icon: <GoRepoForked/>, href: "/profile/repository"  },
         { name: "System", icon: <MdSettings/>, href: "/profile/system"  },
-        { name: "Comunity", icon: <BsFillPeopleFill/>, href: "/profile/comunity"  },
+        { name: "Community", icon: <BsFillPeopleFill/>, href: "/profile/comunity"  },
         { name: "Support", icon: <BsFillQuestionCircleFill/>, href: "/profile/support"  },
       ];
       const [active, setActive] = useState(0);

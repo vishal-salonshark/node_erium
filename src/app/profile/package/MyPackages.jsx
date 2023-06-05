@@ -23,9 +23,9 @@ const MyPackages = () => {
         </div>
       </div>
 
-     { packages.map((item)=>{
+      { packages.map((item, i)=>{
       return(
-      <div className='flex flex-row h-12 p-4 justify-between items-center'>
+      <div className='flex flex-row h-12 p-4 justify-between items-center' key={i}>
       <div className='flex flex-row justify-center gap-5 items-center'>
         <label className={`text-xs font-semibold ${item.status === 'RUNNING'? 'bg-cyan-400': 'bg-yellow-400'} p-[0.125rem] rounded text-white w-20 text-center`}>{item.status}</label>
         <div className='flex flex-row justify-center items-center gap-2'> 
