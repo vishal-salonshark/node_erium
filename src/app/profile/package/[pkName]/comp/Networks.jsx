@@ -64,7 +64,7 @@ const Networks = () => {
                 className={`toggle__line w-10 h-5  rounded-full shadow-inner ${
                   isChecked ? "bg-blue-400" : "bg-gray-400"
                 }`}
-              ></div>
+                ></div>
               <div
                 className={`toggle__dot absolute w-4 h-4 bg-white rounded-full  shadow inset-y-[2px] ${
                   isChecked ? "right-1" : "left-1"
