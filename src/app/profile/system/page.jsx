@@ -2,7 +2,16 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Info from './tabs/Info'
-
+import AutoUpdate from './tabs/AutoUpdate'
+import Profile from './tabs/Profile'
+import Power from './tabs/Power'
+import Notification from './tabs/Notification'
+import Network from './tabs/Network'
+import Updates from './tabs/Updates'
+import Peer from './tabs/Peer'
+import Advance from './tabs/Advance'
+import Security from './tabs/Security'
+import Hardware from './tabs/Hardware'
 
 const page = () => {
     const router = useRouter()
@@ -120,29 +129,41 @@ const page = () => {
             </button>
             <button
               className={`m-2 align-middle text-lg  ${
-                active === "Adhvance"
+                active === "Advance"
                   ? "border-b-4 font-semibold border-blue-400"
                   : ""
               }`}
-              onClick={() => setActive("Adhvance")}
+              onClick={() => setActive("Advance")}
             >
-              Adhvance
+              Advance
             </button>
           </div>
           <div className='mt-5 h-[75vh] overflow-auto scrollbar-none'>
                       {
-                      // active === 'AutoDignose'?
-                      //   <AutoDignose/>:
-                      //   active === 'Report'?
-                      //   <Report/>:
-                      //   active === 'Port'?
-                      //   <Port/>:
-                      //   active === 'Activity'?
-                      //   <Activity/>:
-                        // ''
+                      active === 'Info'?
+                        <Info/>:
+                        active === 'AutoUpdate'?
+                        <AutoUpdate/>:
+                        active === 'Profile'?
+                        <Profile/>:
+                        active === 'Power'?
+                        <Power/>:
+                        active === 'Notification'?
+                        <Notification/>:
+                        active === 'Network'?
+                        <Network/>:
+                        active === 'Updates'?
+                        <Updates/>:
+                        active === 'Peer'?
+                        <Peer/>:
+                        active === 'Security'?
+                        <Security/>:
+                        active === 'Hardware'?
+                        <Hardware/>:
+                        active === 'Advance'?
+                        <Advance/>:
+                        ''
                         }
-
-                        <Info/>
                     </div>
 
         </div>

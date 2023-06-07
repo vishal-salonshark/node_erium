@@ -1,5 +1,5 @@
 import React from 'react'
-import { BsDiscord } from 'react-icons/bs'
+import { FaDiscourse } from 'react-icons/fa'
 
 const Report = () => {
   return (
@@ -9,13 +9,13 @@ const Report = () => {
         <p className='text-xs mt-4'>Befor report, please make sure that the topic does not alrady exist in our <span className='text-blue-400'>forum</span></p>
         <div className='mt-4 flex flex-col justify-center items-center '>
           <div className='w-full px-5 p-2 flex flex-row border border-gray-400 rounded-t-md bg-gray-200 justify-start items-center gap-2 text-gray-500'>
-            <BsDiscord className='w-6 h-6'/>
+            <FaDiscourse className='w-6 h-6'/>
             <div className='flex justify-start items-center font-semibold gap-2'><span>{'  >  '}</span> New Topic <span>{'  >  '}</span> Body</div>
           </div>
           <div className='w-full p-5 flex flex-col border border-gray-400 rounded-b-md bg-gray-100 justify-start items-start gap-2 text-gray-500'>
             <span>Befor filing a new topic, please provide the following information.</span>
             <h2 className='text-3xl'>Core EriumNode Package versions</h2>
-              <ol className='px-2 gap-2 flex flex-col justify-start items-center'>
+              <ol className='px-2 gap-2 flex flex-col justify-center items-start'>
                 <li>&#x2022;  bind.epn.eriumnode.eth: 0.2.6</li>
                 <li>&#x2022;  dappmanager.epn.eriumnode.eth: 0.2.64, commit: a27021fe</li>
                 <li>&#x2022;  https.epn.eriumnode.eth: 0.1.4</li>
