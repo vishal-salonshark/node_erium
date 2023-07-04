@@ -28,14 +28,14 @@ const WiFi = () => {
       return
     }
 
-    if (password !== passwordConfirm) {
-      toast.error("Please re-enter the Password ")
-      return
-    }
+    // if (password !== passwordConfirm) {
+    //   toast.error("Please re-enter the Password ")
+    //   return
+    // }
 
 
     try {
-      const res = await fetch('http://localhost:3000/api/changeWifiCredentials', {
+      const res = await fetch('http://localhost:3000/api/connectToWiFi', {
         headers: {
           'Content-Type': 'application/json'
         },
@@ -110,7 +110,7 @@ const WiFi = () => {
 
       {isChecked ? (
         <div className="bg-[#fff] flex flex-col border border-neutral-300 mt-5 p-4 rounded text-gray-800 text-left">
-          <h2 className="pb-4">Change the WIFI credentials</h2>
+          <h2 className="pb-4">Connect To EriunNode WIFI </h2>
           <div className="mb-4">
             <h2 className="font-normal text-gray-400 mb-2">SSID</h2>
             <input
@@ -120,14 +120,14 @@ const WiFi = () => {
             />
           </div>
           <div className="mb-4">
-            <h2 className="font-normal text-gray-400 mb-2">New Password</h2>
+            <h2 className="font-normal text-gray-400 mb-2">Password</h2>
             <input
               type="password"
               onChange={(e)=> setPassword(e.target.value)}
               className="w-full outline-none text-xs rounded p-2 border border-stone-300"
             />
           </div>
-          <div className="mb-4">
+          {/* <div className="mb-4">
             <h2 className="font-normal text-gray-400 mb-2">
               Confirm new Password
             </h2>
@@ -136,7 +136,7 @@ const WiFi = () => {
               onChange={(e)=> setPasswordConfirm(e.target.value)}
               className="w-full outline-none text-xs rounded p-2 border border-stone-300"
             />
-          </div>
+          </div> */}
           <div className="mb-4">
             <button className="text-white bg-gray-400 text-sm font-semibold hover:bg-blue-400 rounded-md p-2 "
             onClick={()=>handleSubmit()}>

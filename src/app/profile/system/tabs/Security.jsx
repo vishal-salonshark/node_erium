@@ -1,8 +1,49 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { BsFillInfoCircleFill } from 'react-icons/bs'
 import { RxCross2 } from 'react-icons/rx'
 
 const Security = () => {
+
+  const [ssid , setSsid] = useState('')
+  const [wifiCurrentPassword, setWifiCurrentPassword] = useState('')
+  const [wifiPassword, setWifiPassword] = useState('')
+  const [wifiPasswordConfirm, setwifiPasswordConfirm] = useState('')
+
+  const handleWiFiChangePasswordSubmit = async () => {
+    if (ssid === '' || wifiPassword === '') {
+      toast.error("Fill all fields")
+      return
+    }
+
+    if (wifiPassword !== wifiPasswordConfirm) {
+      toast.error("Please re-enter the Password ")
+      return
+    }
+
+
+    try {
+      const res = await fetch('http://localhost:3000/api/changeWifiCredentials', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({ ssid, wifiCurrentPassword, wifiPassword})
+      })
+
+      console.log(await res.json())
+      if (res.ok) {
+        toast.success("Connected to Wi-Fi Successfully")
+        return
+      } else {
+        toast.error("Error occured while connecting")
+        return
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+
   return (
     <div>
      
@@ -61,10 +102,18 @@ const Security = () => {
       <div className="bg-[#fff] flex flex-col border border-neutral-300 mt-5 p-4 rounded text-gray-800 text-left">
         <p className="text-sm  text-gray-500 mb-2">Please chainge tha WIFI credentials. The current password is the factory insecure default. changin it to a strong pasword will protect your EriumNode from external attackers.</p>
         <div className="mb-4">
+          <h2 className="font-normal text-gray-400 mb-2">SSID</h2>
+          <input
+            type="text"
+            onChange={(e)=> setSsid(e.target.value)}
+            className="w-full outline-none text-xs rounded p-2 border border-stone-300"
+          />
+        </div>
+        <div className="mb-4">
           <h2 className="font-normal text-gray-400 mb-2">Current Password</h2>
           <input
             type="text"
-            // onChange={(e)=> setCurrentPassword(e.target.value)}
+            onChange={(e)=> setWifiCurrentPassword(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
         </div>
@@ -72,7 +121,7 @@ const Security = () => {
           <h2 className="font-normal text-gray-400 mb-2">New Password</h2>
           <input
             type="newPassword"
-            // onChange={(e)=> setNewPassword(e.target.value)}
+            onChange={(e)=> setWifiPassword(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
         </div>
@@ -82,13 +131,13 @@ const Security = () => {
           </h2>
           <input
             type="newPassword"
-            // onChange={(e)=> setPasswordConfirm(e.target.value)}
+            onChange={(e)=> setwifiPasswordConfirm(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
         </div>
         <div className="mb-4">
           <button className="text-white bg-gray-400 text-sm font-semibold hover:bg-blue-400 rounded-md p-2 "
-          // onClick={()=>handleSubmit()}
+          onClick={()=>handleWiFiChangePasswordSubmit()}
           >
             Change Password
           </button>
