@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { BsFillInfoCircleFill } from 'react-icons/bs'
 import { RxCross2 } from 'react-icons/rx'
+import { toast } from 'react-toastify'
 
 const Security = () => {
 
@@ -8,6 +9,9 @@ const Security = () => {
   const [wifiCurrentPassword, setWifiCurrentPassword] = useState('')
   const [wifiPassword, setWifiPassword] = useState('')
   const [wifiPasswordConfirm, setwifiPasswordConfirm] = useState('')
+  const [hostCurrentPassword, setHostCurrentPassword] = useState('')
+  const [hostNewPassword, setHostNewPassword] = useState('')
+  const [hostPasswordConfirm, setHostPasswordConfirm] = useState('')
 
   const handleWiFiChangePasswordSubmit = async () => {
     if (ssid === '' || wifiPassword === '') {
@@ -42,6 +46,39 @@ const Security = () => {
       console.log(error)
     }
   }
+  const handleHostChangePasswordSubmit = async () => {
+    if (hostCurrentPassword === '' || hostNewPassword === '') {
+      toast.error("Fill all fields")
+      return
+    }
+
+    if (hostNewPassword !== hostPasswordConfirm) {
+      toast.error("Please re-enter the Password ")
+      return
+    }
+
+
+    try {
+      const res = await fetch('http://localhost:3000/api/changeHostPassword', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body: JSON.stringify({ hostCurrentPassword, hostNewPassword })
+      })
+
+      console.log(await res.json())
+      if (res.ok) {
+        toast.success("Host Password Changed Successfully")
+        return
+      } else {
+        toast.error("Error occured while Changing Host Password")
+        return
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
 
   return (
@@ -66,7 +103,7 @@ const Security = () => {
           <h2 className="font-normal text-gray-400 mb-2">Current Password</h2>
           <input
             type="text"
-            // onChange={(e)=> setCurrentPassword(e.target.value)}
+            onChange={(e)=> setHostCurrentPassword(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
         </div>
@@ -74,7 +111,7 @@ const Security = () => {
           <h2 className="font-normal text-gray-400 mb-2">New Password</h2>
           <input
             type="newPassword"
-            // onChange={(e)=> setNewPassword(e.target.value)}
+            onChange={(e)=> setHostNewPassword(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
         </div>
@@ -84,13 +121,13 @@ const Security = () => {
           </h2>
           <input
             type="newPassword"
-            // onChange={(e)=> setPasswordConfirm(e.target.value)}
+            onChange={(e)=> setHostPasswordConfirm(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
         </div>
         <div className="mb-4">
           <button className="text-white bg-gray-400 text-sm font-semibold hover:bg-blue-400 rounded-md p-2 "
-          // onClick={()=>handleSubmit()}
+          onClick={()=>handleHostChangePasswordSubmit()}
           >
             Change Password
           </button>
