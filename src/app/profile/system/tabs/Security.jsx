@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { BsFillInfoCircleFill } from 'react-icons/bs'
 import { RxCross2 } from 'react-icons/rx'
 import { toast } from 'react-toastify'
@@ -13,6 +13,12 @@ const Security = () => {
   const [hostNewPassword, setHostNewPassword] = useState('')
   const [hostPasswordConfirm, setHostPasswordConfirm] = useState('')
 
+  useEffect(() => {
+   console.log(hostCurrentPassword)
+   console.log(hostNewPassword)
+   console.log(hostPasswordConfirm)
+  }, [hostPasswordConfirm])
+  
   const handleWiFiChangePasswordSubmit = async () => {
     if (ssid === '' || wifiPassword === '') {
       toast.error("Fill all fields")
@@ -31,7 +37,7 @@ const Security = () => {
           'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify({ ssid, wifiCurrentPassword, wifiPassword})
+        body: JSON.stringify({ ssid, wifiCurrentPassword, wifiPassword })
       })
 
       console.log(await res.json())
@@ -46,6 +52,7 @@ const Security = () => {
       console.log(error)
     }
   }
+
   const handleHostChangePasswordSubmit = async () => {
     if (hostCurrentPassword === '' || hostNewPassword === '') {
       toast.error("Fill all fields")
@@ -64,7 +71,7 @@ const Security = () => {
           'Content-Type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify({ hostCurrentPassword, hostNewPassword })
+        body:JSON.stringify({ hostCurrentPassword, hostNewPassword })
       })
 
       console.log(await res.json())
@@ -76,7 +83,7 @@ const Security = () => {
         return
       }
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -110,7 +117,7 @@ const Security = () => {
         <div className="mb-4">
           <h2 className="font-normal text-gray-400 mb-2">New Password</h2>
           <input
-            type="newPassword"
+            type="password"
             onChange={(e)=> setHostNewPassword(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
@@ -120,7 +127,7 @@ const Security = () => {
             Confirm new Password
           </h2>
           <input
-            type="newPassword"
+            type="password"
             onChange={(e)=> setHostPasswordConfirm(e.target.value)}
             className="w-full outline-none text-xs rounded p-2 border border-stone-300"
           />
