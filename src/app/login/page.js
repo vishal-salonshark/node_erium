@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { signIn } from 'next-auth/react'
@@ -12,6 +12,12 @@ const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const router = useRouter()
+
+    useEffect(() => {
+        console.log(email)
+        console.log(password)
+    }, [password])
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -51,7 +57,7 @@ const Login = () => {
                 <form className='mt-10 pb-5 border-b border-gray-300 w-4/5 mx-auto flex flex-col justify-center items-center' onSubmit={handleSubmit}>
                     <input type="email" className='w-80 h-10 rounded-xl p-2 outline-none focus:outline-blue-400 focus:border-none border border-gray-300' placeholder='Email...' onChange={(e) => setEmail(e.target.value)} />
                     <input type="password" className='w-80 h-10 mt-5 rounded-xl p-2 outline-none focus:outline-blue-400 focus:border-none border border-gray-300' placeholder='Password...' onChange={(e) => setPassword(e.target.value)} />
-                    <button className='w-36 h-12 my-5 rounded-lg bg-blue-500 text-white text-lg font-medium'>Log in</button>
+                    <button type='submit' className='w-36 h-12 my-5 rounded-lg bg-blue-500 text-white text-lg font-medium'>Log in</button>
                     <Link className='w-50 h-auto p-2 text-center' href='/register'>
                         Don&apos;t have an account? <br /> <span className='mt-1 text-sm text-blue-600'>Register now.</span>
                     </Link>

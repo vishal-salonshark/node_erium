@@ -14,7 +14,7 @@ const Register = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [recoveryCode, setRecoveryCode] = useState("")
-  const [registerSuccess, setRegisterSuccess] = useState(true)
+  const [registerSuccess, setRegisterSuccess] = useState(false)
 
   useEffect(() => {
    console.log(registerSuccess)
