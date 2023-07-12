@@ -34,9 +34,9 @@ const Login = () => {
 
         try {
             const res = await signIn('credentials', { email, password, redirect: false })
-
+            console.log(res)
             if (res?.error == null) {
-                router.push("/profile")
+                router.push("profile/dashboard")
             } else {
                 toast.error("Error occured while logging")
             }
@@ -46,9 +46,9 @@ const Login = () => {
     }
 
     // Google Handler function
-    async function handleGoogleSignin(){
-        signIn('google', { callbackUrl : "http://localhost:3000/profile"})
-    }
+    // async function handleGoogleSignin(){
+    //     signIn('google', { callbackUrl : "http://localhost:3000/profile"})
+    // }
 
     return (
         <div className='w-screen h-screen flex justify-center items-center'>
@@ -62,11 +62,13 @@ const Login = () => {
                         Don&apos;t have an account? <br /> <span className='mt-1 text-sm text-blue-600'>Register now.</span>
                     </Link>
                 </form>
-                <div className='w-full my-5' >
+
+                {/* <div className='w-full my-5' >
                     <button type='button' onClick={handleGoogleSignin} className="w-64 mx-auto px-8 h-12 transition-transform ease-linear duration-300 hover:shadow-xl hover:shadow-gray-400 hover:-translate-x-1 hover:-translate-y-1 hover:border-none flex justify-between items-center rounded-full border-2 border-gray-300 text-gray-400 font-semibold ">
                      <span>Sign In with Google</span> <FcGoogle className='w-6 h-6'/>
                     </button>
-                </div>
+                </div> */}
+
             </div>
             <ToastContainer />
         </div>
